@@ -1,0 +1,54 @@
+<div class="container pt-4">
+    <div class="row">
+
+        <section class="card col bg-light">
+            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="p-2">
+
+                <div class="card-header bg-light text-center">
+                    <h3>Login</h3>
+                </div>
+                
+                <div class="row mt-2">
+                    <div class="col-6 mb-2">
+                        <label for="email">Email</label>
+                        <input type="text" formControlName="email" id="email" name="email" placeholder="mail@example.com*" class="form-control"> 
+                    </div>
+
+                    <div class="col-6 mb-2">
+                        <label for="pass">Password</label>
+                        <input type="password" formControlName="pass" id="pass" name="pass" placeholder="pass123*" class="form-control"> 
+                    </div>
+
+                </div>  
+
+                <button class="btn btn-primary btn-sm" type="button" [routerLink]="['/signup']" routerLinkActive="active">Registrarse</button>
+
+                <div class="card-footer bg-light mt-2">
+                    <button type="submit" class="btn btn-success btn-block" [disabled]="!loginForm.valid">Sign In</button>
+                </div>
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Email is required!
+                    </div>
+                    <div *ngIf="email.errors.email">
+                        Email must be email structure
+                    </div>
+                </div>
+
+                <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="pass.errors.required">
+                        Password is required!
+                    </div>
+                    <div *ngIf="pass.errors.maxlength">
+                        Password 
+                    </div>
+                </div>
+
+            </form>
+        </section>  
+
+    </div>
+</div>

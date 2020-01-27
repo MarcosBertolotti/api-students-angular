@@ -1,0 +1,48 @@
+<div class="container">
+
+    <section class="card bg-light mt-4">
+        
+
+        <div class="card-header bg-light text-center">
+            <h3>View Student {{ student.studentId }}</h3>
+        </div>
+
+        <div class="p-3">
+
+            <div class="row">
+                <div class="col-4">
+                    {{ student.firstName }}
+                    {{ student.lastName }}
+                </div>
+
+                <div class="col-4">
+                    <label for="">DNI: </label>
+                    {{ student.dni }}
+                </div>
+
+                <div class="col-4">
+                    {{ student.email }}
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-4">
+                    <label for="">Address: </label>
+                    {{ student.address }}
+                </div>
+
+                <div class="col-4">
+                    <label for="">Career: </label>
+                    {{ career.name }}
+                </div>
+
+                <div class="col-4">
+                    <label for="">Description: </label>
+                    {{ career.description }}
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+</div>

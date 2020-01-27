@@ -1,0 +1,77 @@
+<div class="container pt-4">
+    <div class="row">
+
+        <section class="card col bg-light">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="p-2">
+
+                <div class="card-header bg-light text-center">
+                    <h3>Register</h3>
+                </div>
+                
+                <div class="row mt-2">
+                    <div class="col mb-2">
+                        <label for="email">Email</label>
+                        <input type="text" formControlName="email" id="email" name="email" placeholder="mail@example.com*" class="form-control"> 
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-6 mb-2">
+                        <label for="pass">Password</label>
+                        <input type="password" formControlName="pass" id="pass" name="pass" placeholder="pass123*" class="form-control"> 
+                    </div>
+
+                    <div class="col-6 mb-2">
+                        <label for="passConfirm">Password Confirm</label>
+                        <input type="password" formControlName="passConfirm" id="passConfirm" name="passConfirm" placeholder="pass123*" class="form-control"> 
+                    </div>
+
+                </div>
+
+                <div class="card-footer bg-light mt-2">
+                    <button type="submit" class="btn btn-success btn-block" [disabled]="!registerForm.valid">Sign Up</button>
+                </div>
+
+                <div *ngIf="email.invalid && (email.dirty || email.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="email.errors.required">
+                        Email is required!
+                    </div>
+                    <div *ngIf="email.errors.email">
+                        Email must be email structure!
+                    </div>
+                    <div *ngIf="email.errors.emailExists">
+                        Email already exists!
+                    </div>
+                </div>
+
+                <div *ngIf="pass.invalid && (pass.dirty || pass.touched)"
+                    class="alert alert-danger">
+                    <div *ngIf="pass.errors.required">
+                        Password is required!
+                    </div>
+                    <div *ngIf="pass.errors.maxlength">
+                        Password must be less than 15 characters!
+                    </div>
+                </div>
+
+                <div *ngIf="passConfirm.invalid && (passConfirm.dirty || passConfirm.touched)"
+                class="alert alert-danger">
+                    <div *ngIf="passConfirm.errors.required">
+                        Password Confirm is required!
+                    </div>
+                    <div *ngIf="passConfirm.errors.maxlength">
+                        Password Confirm bust be less than 15 characters!
+                    </div>
+                </div>
+
+                <div *ngIf="registerForm.errors?.passwordConfirm && (pass.dirty || pass.touched)
+                        && (passConfirm.dirty || passConfirm.touched)" class="alert alert-danger">
+                    passwords '{{ registerForm.errors?.passwordConfirm.value[0] }}' and '{{ registerForm.errors?.passwordConfirm.value[1] }}' does not match
+                </div>
+
+            </form>
+        </section>  
+
+    </div>
+</div>
